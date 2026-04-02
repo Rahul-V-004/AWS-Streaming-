@@ -216,6 +216,27 @@ We need three IAM roles — one for the Lambda producer, one for Glue, one for M
    - `CloudWatchLogsFullAccess`
 4. **Role name**: `ecommerce-streaming-glue-role`
 5. Click **"Create role"**
+6. After creation, click on the role → **"Add inline policy"** → **JSON** tab
+7. Paste this policy (grants Kafka read access for the Spark consumer):
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": [
+           "kafka-cluster:Connect",
+           "kafka-cluster:DescribeTopic",
+           "kafka-cluster:ReadData",
+           "kafka-cluster:DescribeGroup",
+           "kafka-cluster:AlterGroup"
+         ],
+         "Resource": "*"
+       }
+     ]
+   }
+   ```
+8. **Policy name**: `msk-read-access` → Click **"Create policy"**
 
 ### Role 3: MWAA Execution Role
 
