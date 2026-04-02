@@ -1,0 +1,6 @@
+boto3>=1.28.0
+kafka-python>=2.0.2
+pyspark>=3.4.0
+psycopg2-binary>=2.9.0
+pyarrow>=14.0.0
+pandas>=2.0.0
